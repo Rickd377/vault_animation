@@ -1,5 +1,6 @@
 const btn = document.querySelector(".circle-wrapper");
 const icon = document.querySelector(".vault-icon");
+const circles = document.querySelectorAll(".circle");
 
 btn.addEventListener("click", () => {
   btn.classList.toggle("clicked");

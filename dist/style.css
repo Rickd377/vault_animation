@@ -23,7 +23,7 @@ body {
     rotate: 2turn;
   }
   100% {
-    rotate: 1turn;
+    rotate: 1.5turn;
   }
 }
 @keyframes spinIcon {
@@ -88,28 +88,13 @@ body {
     background: #38fc14;
   }
 }
-@keyframes keepStylingBackground {
-  from {
-    background: #0f3507;
-  }
-}
-@keyframes keepStylingBorder {
-  from {
-    border-color: #38fc14;
-  }
-}
-@keyframes keepStylingCircle {
-  from {
-    background: #38fc14;
-  }
-}
 .vault-spinner .parent-container {
   position: relative;
   cursor: pointer;
 }
 .vault-spinner .parent-container .center-part {
   position: absolute;
-  height: 90px;
+  height: 45px;
   aspect-ratio: 1;
   background: #000000;
   top: 50%;
@@ -123,34 +108,34 @@ body {
 }
 .vault-spinner .parent-container .center-part i {
   color: #ffffff;
-  font-size: 2.5em;
+  font-size: 1.5em;
   pointer-events: none;
 }
 .vault-spinner .parent-container .circle-wrapper {
   position: relative;
-  height: 150px;
+  height: 75px;
   aspect-ratio: 1;
   background: #333333;
-  border: 10px solid #484848;
+  border: 5px solid #484848;
   border-radius: 50%;
 }
 .vault-spinner .parent-container .circle-wrapper.clicked {
-  animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s, borderChange 1s ease-in 1.5s, spinBtnBack 1s ease-in-out 1.5s, keepStylingBorder 99999s linear 2.5s infinite, keepStylingBackground 99999s linear 2.5s infinite;
+  animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s forwards, borderChange 1s ease-in 1.5s forwards, spinBtnBack 1s ease-in-out 1.5s forwards;
 }
 .vault-spinner .parent-container .circle-wrapper.clicked ~ .center-part i {
   color: #38fc14;
   animation: spinIcon 1.5s linear, blink 0.5s ease-in-out 3, jumpIcon 1s ease 1.5s;
 }
 .vault-spinner .parent-container .circle-wrapper.clicked .circle {
-  animation: circleChange 1s ease-in 1.5s, keepStylingCircle 99999s linear 2.5s infinite;
+  animation: circleChange 1s ease-in 1.5s forwards;
 }
 .vault-spinner .parent-container .circle-wrapper .circle {
   position: absolute;
-  height: 10px;
+  height: 5px;
   aspect-ratio: 1;
   background: #484848;
   border-radius: 50%;
-  top: calc(50% - 10px / 2);
-  left: calc(50% - 10px / 2);
-  transform: translate(calc(cos(360deg / 13 * var(--i)) * 55px), calc(sin(360deg / 13 * var(--i)) * 55px));
+  top: calc(50% - 5px / 2);
+  left: calc(50% - 5px / 2);
+  transform: translate(calc(cos(360deg / 13 * var(--i)) * 27.5px), calc(sin(360deg / 13 * var(--i)) * 27.5px));
 }/*# sourceMappingURL=style.css.map */

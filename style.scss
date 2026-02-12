@@ -32,7 +32,7 @@ $count: 13;
     rotate: 2turn;
   }
   100% {
-    rotate: 1turn;
+    rotate: 1.5turn;
   }
 }
 
@@ -104,26 +104,9 @@ $count: 13;
   }
 }
 
-@keyframes keepStylingBackground {
-  from {
-    background: $dark-neon;
-  }
-}
-
-@keyframes keepStylingBorder {
-  from {
-    border-color: $neon;
-  }
-}
-@keyframes keepStylingCircle {
-  from {
-    background: $neon;
-  }
-}
-
 .vault-spinner {
-  $container: 150px;
-  $circle: 10px;
+  $container: 75px;
+  $circle: 5px;
 
   .parent-container {
     position: relative;
@@ -145,7 +128,7 @@ $count: 13;
       
       i {
         color: $white;
-        font-size: 2.5em;
+        font-size: 1.5em;
         pointer-events: none;
       }
     }
@@ -159,7 +142,7 @@ $count: 13;
       border-radius: 50%;
 
       &.clicked {
-        animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s, borderChange 1s ease-in 1.5s, spinBtnBack 1s ease-in-out 1.5s, keepStylingBorder 99999s linear 2.5s infinite, keepStylingBackground 99999s linear 2.5s infinite;
+        animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s forwards, borderChange 1s ease-in 1.5s forwards, spinBtnBack 1s ease-in-out 1.5s forwards;
         
         & ~ .center-part {
           i {
@@ -169,7 +152,7 @@ $count: 13;
         }
 
         .circle {
-          animation: circleChange 1s ease-in 1.5s, keepStylingCircle 99999s linear 2.5s infinite;
+          animation: circleChange 1s ease-in 1.5s forwards;
         }
       }
 
