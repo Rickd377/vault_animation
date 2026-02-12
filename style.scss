@@ -1,0 +1,194 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$border-color: #484848;
+$background-color: #333333;
+$center-color: #000000;
+$white: #ffffff;
+$neon: #38fc14;
+$dark-neon: #0f3507;
+$count: 13;
+
+@keyframes spinBtn {
+  0% {
+    rotate: 0turn;
+  }
+  100% {
+    rotate: 2turn;
+  }
+}
+
+@keyframes spinBtnBack {
+  0% {
+    rotate: 2turn;
+  }
+  100% {
+    rotate: 1turn;
+  }
+}
+
+@keyframes spinIcon {
+  0% {
+    rotate: 0turn;
+    scale: 1;
+  }
+  80% {
+    scale: 1;
+  }
+  100% {
+    rotate: 1turn;
+    scale: .85;
+  }
+}
+
+@keyframes jumpIcon {
+  0% {
+    scale: .85;
+  }
+  20% {
+    scale: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .5;
+  }
+}
+
+@keyframes backgroundChange {
+  0% {
+    background: $background-color;
+  }
+  25% {
+    background: $dark-neon;
+  }
+  100% {
+    background: $dark-neon;
+  }
+}
+
+@keyframes borderChange {
+  0% {
+    border-color: $background-color;
+  }
+  25% {
+    border-color: $neon;
+  }
+  100% {
+    border-color: $neon;
+  }
+}
+
+@keyframes circleChange {
+  0% {
+    background: $background-color;
+  }
+  25% {
+    background: $neon;
+  }
+  100% {
+    background: $neon;
+  }
+}
+
+@keyframes keepStylingBackground {
+  from {
+    background: $dark-neon;
+  }
+}
+
+@keyframes keepStylingBorder {
+  from {
+    border-color: $neon;
+  }
+}
+@keyframes keepStylingCircle {
+  from {
+    background: $neon;
+  }
+}
+
+.vault-spinner {
+  $container: 150px;
+  $circle: 10px;
+
+  .parent-container {
+    position: relative;
+    cursor: pointer;
+
+    .center-part {
+      position: absolute;
+      height: calc($container - $circle * 6);
+      aspect-ratio: 1;
+      background: $center-color;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      i {
+        color: $white;
+        font-size: 2.5em;
+        pointer-events: none;
+      }
+    }
+
+    .circle-wrapper {
+      position: relative;
+      height: $container;
+      aspect-ratio: 1;
+      background: $background-color;
+      border: $circle solid $border-color;
+      border-radius: 50%;
+
+      &.clicked {
+        animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s, borderChange 1s ease-in 1.5s, spinBtnBack 1s ease-in-out 1.5s, keepStylingBorder 99999s linear 2.5s infinite, keepStylingBackground 99999s linear 2.5s infinite;
+        
+        & ~ .center-part {
+          i {
+            color: $neon;
+            animation: spinIcon 1.5s linear, blink .5s ease-in-out 3, jumpIcon 1s ease 1.5s;
+          }
+        }
+
+        .circle {
+          animation: circleChange 1s ease-in 1.5s, keepStylingCircle 99999s linear 2.5s infinite;
+        }
+      }
+
+      .circle {
+        $_angle: calc(360deg / #{$count} * var(--i));
+        $_radius: calc($container / 2 - $circle * 2);
+
+        position: absolute;
+        height: $circle;
+        aspect-ratio: 1;
+        background: $border-color;
+        border-radius: 50%;
+        top: calc(50% - #{$circle} / 2);
+        left: calc(50% - #{$circle} / 2);
+        transform: translate(
+          calc(cos($_angle) * $_radius),
+          calc(sin($_angle) * $_radius)
+        );
+      }
+    }
+  }
+}

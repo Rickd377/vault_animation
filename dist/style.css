@@ -1,0 +1,156 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes spinBtn {
+  0% {
+    rotate: 0turn;
+  }
+  100% {
+    rotate: 2turn;
+  }
+}
+@keyframes spinBtnBack {
+  0% {
+    rotate: 2turn;
+  }
+  100% {
+    rotate: 1turn;
+  }
+}
+@keyframes spinIcon {
+  0% {
+    rotate: 0turn;
+    scale: 1;
+  }
+  80% {
+    scale: 1;
+  }
+  100% {
+    rotate: 1turn;
+    scale: 0.85;
+  }
+}
+@keyframes jumpIcon {
+  0% {
+    scale: 0.85;
+  }
+  20% {
+    scale: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@keyframes backgroundChange {
+  0% {
+    background: #333333;
+  }
+  25% {
+    background: #0f3507;
+  }
+  100% {
+    background: #0f3507;
+  }
+}
+@keyframes borderChange {
+  0% {
+    border-color: #333333;
+  }
+  25% {
+    border-color: #38fc14;
+  }
+  100% {
+    border-color: #38fc14;
+  }
+}
+@keyframes circleChange {
+  0% {
+    background: #333333;
+  }
+  25% {
+    background: #38fc14;
+  }
+  100% {
+    background: #38fc14;
+  }
+}
+@keyframes keepStylingBackground {
+  from {
+    background: #0f3507;
+  }
+}
+@keyframes keepStylingBorder {
+  from {
+    border-color: #38fc14;
+  }
+}
+@keyframes keepStylingCircle {
+  from {
+    background: #38fc14;
+  }
+}
+.vault-spinner .parent-container {
+  position: relative;
+  cursor: pointer;
+}
+.vault-spinner .parent-container .center-part {
+  position: absolute;
+  height: 90px;
+  aspect-ratio: 1;
+  background: #000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vault-spinner .parent-container .center-part i {
+  color: #ffffff;
+  font-size: 2.5em;
+  pointer-events: none;
+}
+.vault-spinner .parent-container .circle-wrapper {
+  position: relative;
+  height: 150px;
+  aspect-ratio: 1;
+  background: #333333;
+  border: 10px solid #484848;
+  border-radius: 50%;
+}
+.vault-spinner .parent-container .circle-wrapper.clicked {
+  animation: spinBtn 1.5s ease-in-out, backgroundChange 1s ease-in 1.5s, borderChange 1s ease-in 1.5s, spinBtnBack 1s ease-in-out 1.5s, keepStylingBorder 99999s linear 2.5s infinite, keepStylingBackground 99999s linear 2.5s infinite;
+}
+.vault-spinner .parent-container .circle-wrapper.clicked ~ .center-part i {
+  color: #38fc14;
+  animation: spinIcon 1.5s linear, blink 0.5s ease-in-out 3, jumpIcon 1s ease 1.5s;
+}
+.vault-spinner .parent-container .circle-wrapper.clicked .circle {
+  animation: circleChange 1s ease-in 1.5s, keepStylingCircle 99999s linear 2.5s infinite;
+}
+.vault-spinner .parent-container .circle-wrapper .circle {
+  position: absolute;
+  height: 10px;
+  aspect-ratio: 1;
+  background: #484848;
+  border-radius: 50%;
+  top: calc(50% - 10px / 2);
+  left: calc(50% - 10px / 2);
+  transform: translate(calc(cos(360deg / 13 * var(--i)) * 55px), calc(sin(360deg / 13 * var(--i)) * 55px));
+}/*# sourceMappingURL=style.css.map */
